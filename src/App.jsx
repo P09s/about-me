@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Mail, Moon, Sun, Home, Briefcase, MapPin, User, Send } from 'lucide-react';
+import { 
+  Github, Linkedin, Mail, Moon, Sun, Home, Briefcase, 
+  MapPin, User, Send, Heart, Trophy, Users, Mic, Code 
+} from 'lucide-react';
 
 // ==================== CONSTANTS ====================
 const PROFILE = {
   name: "Parag Sharma",
-  role: "Full Stack Developer & AI Engineer",
+  role: "Product Engineer & Developer",
   tagline: "Engineering intelligence with pixel-perfect precision.",
-  bio: "Final year B.Tech CSE student and President of Google Developer Groups (GDG) on Campus. I bridge the gap between complex AI logic and intuitive user experiences. Winner of Ideathon Taiwan 2025. Passionate about Anime, Content Creation, and Building Scalable Systems.",
+  bio: "Final year B.Tech CSE student and Ex-President of Google Developer Groups (GDG) on Campus. I bridge the gap between complex AI logic and intuitive user experiences. Winner of Ideathon Taiwan 2025. Passionate about Anime, Content Creation, and Building Scalable Systems.",
   email: "sharmaparag2004@gmail.com",
   location: "India",
 };
@@ -22,8 +25,8 @@ const EXPERIENCES = [
   {
     company: "Google Developer Groups (GDG) on Campus",
     role: "President",
-    period: "Sept 2024 - Present",
-    description: "Leading 30+ developers to build SD+AI projects. Organized tech workshops for 1000+ participants. Established Git-based workflows and Agile practices."
+    period: "Sept 2024 - July 2025",
+    description: "Led 30+ developers to build SD+AI projects. Organized tech workshops for 1000+ participants. Established Git-based workflows and Agile practices."
   },
   {
     company: "TriColor Initiatives Pvt. Ltd.",
@@ -33,55 +36,107 @@ const EXPERIENCES = [
   }
 ];
 
+const COMMUNITY_DATA = [
+  {
+    role: "Organizer",
+    org: "GDG HACKS",
+    period: "Dec 2024 - Apr 2025",
+    description: "Orchestrated a national-level hackathon with 400+ participants and 150 teams. Managed logistics for an intense innovation challenge.",
+    icon: Trophy,
+    tags: ["Management", "Event Planning"],
+    featured: true
+  },
+  {
+    role: "Student Coordinator",
+    org: "GDG Hackureka",
+    period: "Feb 2025",
+    description: "Coordinated a 7-hour intense hackathon challenge. Successfully managed 400+ participants from across the country.",
+    icon: Users,
+    tags: ["Leadership", "Operations"],
+    featured: false
+  },
+  {
+    role: "Facilitator",
+    org: "GDSC MM(DU) - GenAI",
+    period: "May 2024",
+    description: "Led a month-long GenAI Google Cloud program. Reviewed applications for 150 students and guided them through cloud concepts.",
+    icon: Mic,
+    tags: ["Mentorship", "GenAI"],
+    featured: false
+  },
+  {
+    role: "Co-Facilitator",
+    org: "GDSC MM(DU) - Android",
+    period: "Dec 2023 - Jan 2024",
+    description: "Taught Android Development to 70-100 students under the 'Discover, Design and Develop' program.",
+    icon: Code,
+    tags: ["Teaching", "Android"],
+    featured: true
+  }
+];
+
 const PROJECTS = [
+  {
+    title: "LinkFluence",
+    category: "Web Development & SaaS",
+    description: "A collaborative marketplace bridging the gap between micro-influencers and brands. Features automated matchmaking and secure campaign management.",
+    stats: "Building",
+    tech: ["MongoDB", "Express.js", "React", "Node.js"],
+    featured: true
+  },
   {
     title: "Silent Voice",
     category: "AI & Computer Vision",
     description: "AI-powered sign language translation system using computer vision and speech synthesis. Winner, Ideathon Taiwan 2025.",
     stats: "25% Latency Reduction",
-    tech: ["OpenCV", "TensorFlow", "Flutter"],
+    tech: ["Python", "OpenCV", "TensorFlow", "Computer Vision", "AI/ML", "Flutter"],
     featured: true
   },
   {
     title: "Orbcura",
-    category: "Accessibility",
-    description: "Accessibility app for visually impaired users with AI image detection and intuitive 4-corner UPI transactions.",
-    stats: "INNO-vation Nominee",
-    tech: ["Flutter", "Firebase", "AI"],
+    category: "Accessibility & AI",
+    description: "Assistive app for the visually impaired featuring real-time AI image detection and voice-guided UPI payments.",
+    stats: "FY2024 INNO-vation Nominee",
+    tech: ["Flutter", "ML Kit", "UPI API", "Firebase"],
     featured: true
   },
   {
     title: "Aqua Watch",
-    category: "Disaster Mgmt",
-    description: "Flood-alert system using geolocation APIs and community-sourced warnings. SIH Finalist.",
-    stats: "< 2s Update Time",
-    tech: ["REST API", "Geolocation", "React"],
+    category: "Disaster Management",
+    description: "Community-driven flood management system with crowd-sourced reporting and interactive risk mapping.",
+    stats: "Real-time Risk Analytics",
+    tech: ["Flutter", "Google Maps API", "Firebase"],
     featured: false
   },
   {
     title: "HerSphere",
     category: "HealthTech",
     description: "Pregnancy health companion with ML-based trimester recommendations.",
-    stats: "98% Uptime",
-    tech: ["Python", "Analytics", "Firebase"],
+    stats: "First Project",
+    tech: ["Flutter", "Analytics", "Firebase"],
     featured: false
   }
 ];
 
-// ==================== HOOKS ====================
+// ==================== THEME HOOK ====================
 const useTheme = () => {
   const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved || 'dark';
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved;
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+    }
+    return 'light';
   });
 
   useEffect(() => {
-    localStorage.setItem('theme', theme);
+    const root = window.document.documentElement;
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
     }
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
@@ -104,7 +159,7 @@ const useLiveTime = () => {
 const ThemeToggle = ({ theme, toggleTheme }) => (
   <motion.button
     onClick={toggleTheme}
-    className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-gray-300 dark:border-white/10"
+    className="fixed top-6 right-6 z-50 p-3 rounded-full bg-gray-100 dark:bg-white/5 backdrop-blur-xl border border-gray-300 dark:border-white/10 shadow-sm"
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.95 }}
   >
@@ -113,18 +168,23 @@ const ThemeToggle = ({ theme, toggleTheme }) => (
       animate={{ rotate: theme === 'dark' ? 0 : 180 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      {theme === 'dark' ? <Moon className="w-5 h-5 text-white" /> : <Sun className="w-5 h-5 text-gray-900" />}
+      {theme === 'dark' ? (
+        <Moon className="w-5 h-5 text-white" />
+      ) : (
+        <Sun className="w-5 h-5 text-gray-900" />
+      )}
     </motion.div>
   </motion.button>
 );
 
-// ==================== NAVBAR (DOCK) ====================
+// ==================== NAVBAR ====================
 const Navbar = ({ activeSection, setActiveSection }) => {
   const navItems = [
     { id: 'hero', icon: Home, label: 'Home' },
     { id: 'work', icon: Briefcase, label: 'Work' },
     { id: 'journey', icon: MapPin, label: 'Journey' },
     { id: 'about', icon: User, label: 'About' },
+    { id: 'community', icon: Heart, label: 'Community' },
     { id: 'contact', icon: Send, label: 'Contact' },
   ];
 
@@ -236,7 +296,7 @@ const Hero = () => {
   );
 };
 
-// ==================== WORK (BENTO GRID) ====================
+// ==================== WORK ====================
 const Work = () => (
   <section id="work" className="min-h-screen py-32 px-6">
     <div className="max-w-7xl mx-auto">
@@ -244,7 +304,7 @@ const Work = () => (
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-5xl md:text-7xl font-bold mb-16 tracking-tight"
+        className="text-5xl md:text-7xl font-bold mb-16 tracking-tight text-gray-900 dark:text-white"
       >
         Selected Work
       </motion.h2>
@@ -290,7 +350,7 @@ const Work = () => (
   </section>
 );
 
-// ==================== JOURNEY (TIMELINE) ====================
+// ==================== JOURNEY (FIXED ALIGNMENT) ====================
 const Journey = () => (
   <section id="journey" className="min-h-screen py-32 px-6">
     <div className="max-w-4xl mx-auto">
@@ -298,13 +358,14 @@ const Journey = () => (
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-5xl md:text-7xl font-bold mb-16 tracking-tight"
+        className="text-5xl md:text-7xl font-bold mb-16 tracking-tight text-gray-900 dark:text-white"
       >
         Journey
       </motion.h2>
 
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-gray-400 dark:from-white/20 via-gray-300 dark:via-white/10 to-transparent" />
+        {/* Fixed vertical line alignment */}
+        <div className="absolute left-1.5 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-gray-400 dark:from-white/20 via-gray-300 dark:via-white/10 to-transparent" />
 
         {EXPERIENCES.map((exp, i) => (
           <motion.div
@@ -315,7 +376,8 @@ const Journey = () => (
             transition={{ delay: i * 0.2 }}
             className="relative pl-12 pb-16 last:pb-0"
           >
-            <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-gray-900 dark:bg-white shadow-lg shadow-gray-900/50 dark:shadow-white/50" />
+            {/* Fixed dot alignment with ring for better visual separation */}
+            <div className="absolute left-1.5 -translate-x-1/2 top-2 w-3 h-3 rounded-full bg-gray-900 dark:bg-white shadow-lg shadow-gray-900/50 dark:shadow-white/50 ring-4 ring-white dark:ring-[#050505]" />
             
             <div className="text-sm text-gray-500 dark:text-gray-500 mb-2">{exp.period}</div>
             <h3 className="text-2xl font-bold mb-1 text-gray-900 dark:text-white">{exp.role}</h3>
@@ -336,7 +398,7 @@ const About = () => (
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-5xl md:text-7xl font-bold mb-16 tracking-tight"
+        className="text-5xl md:text-7xl font-bold mb-16 tracking-tight text-gray-900 dark:text-white"
       >
         About
       </motion.h2>
@@ -350,10 +412,12 @@ const About = () => (
           <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
             {PROFILE.bio}
           </p>
-          <p className="text-gray-600 dark:text-gray-500 leading-relaxed">
-            Beyond code, I explore creative pursuits through my YouTube channel <span className="text-gray-900 dark:text-white font-semibold">DAEMON</span>, 
-            where I merge tech insights with anime culture. I believe the best interfaces are invisible—technology 
-            should feel like magic, not machinery.
+          <p className="text-gray-600 dark:text-gray-500 text-sm leading-relaxed">
+            Beyond code, I run{" "}
+            <a href="https://youtube.com/@DaemonPOV" className="text-gray-900 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 hover:underline font-bold underline-offset-4 transition-colors">
+              DAEMON
+            </a>
+            , merging tech insights with anime culture. I believe the best interfaces are invisible—technology should feel like magic, not machinery.
           </p>
         </motion.div>
 
@@ -361,12 +425,74 @@ const About = () => (
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="relative aspect-square rounded-3xl bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/10 overflow-hidden"
+          className="relative aspect-square rounded-3xl border border-gray-200 dark:border-white/10 overflow-hidden"
         >
-          <div className="absolute inset-0 flex items-center justify-center text-8xl opacity-20 dark:opacity-10">
-            👨‍💻
-          </div>
+          <img 
+            src="/pic.png" 
+            alt="Profile" 
+            className="w-full h-full object-cover" 
+          />
         </motion.div>
+      </div>
+    </div>
+  </section>
+);
+
+// ==================== COMMUNITY / VOLUNTEERING (NEW SECTION) ====================
+const Community = () => (
+  <section id="community" className="min-h-screen py-32 px-6 bg-gray-50/50 dark:bg-white/5">
+    <div className="max-w-7xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+      >
+        <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Community<br />Impact
+        </h2>
+        <p className="text-gray-600 dark:text-gray-400 max-w-md text-lg text-right md:text-left">
+          Empowering the next generation of developers through leadership, mentorship, and large-scale events.
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {COMMUNITY_DATA.map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+            className={`p-6 rounded-3xl bg-white dark:bg-black/40 border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/30 transition-all group flex flex-col justify-between h-full ${
+              item.featured ? 'lg:col-span-2' : ''
+            }`}
+            whileHover={{ y: -5 }}
+          >
+            <div>
+              <div className="flex justify-between items-start mb-6">
+                <div className="p-3 rounded-full bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white">
+                  <item.icon size={20} />
+                </div>
+                <span className="text-xs font-mono text-gray-500 dark:text-gray-500">{item.period}</span>
+              </div>
+              
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{item.role}</h3>
+              <div className="text-sm font-medium text-purple-600 dark:text-purple-400 mb-4">{item.org}</div>
+              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                {item.description}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2 mt-auto">
+              {item.tags.map(tag => (
+                <span key={tag} className="px-2 py-1 text-[10px] uppercase tracking-wider font-semibold rounded-md bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/5">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   </section>
@@ -423,7 +549,7 @@ const Contact = () => {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                 whileHover={{ scale: 1.1, y: -4 }}
               >
                 <Icon className="w-6 h-6" strokeWidth={1.5} />
@@ -438,7 +564,7 @@ const Contact = () => {
 
 // ==================== MAIN APP ====================
 export default function App() {
-  const [theme, setTheme] = useTheme();
+  const [theme, toggleTheme] = useTheme();
   const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
@@ -453,7 +579,7 @@ export default function App() {
       { threshold: 0.5 }
     );
 
-    ['hero', 'work', 'journey', 'about', 'contact'].forEach((id) => {
+    ['hero', 'work', 'journey', 'about', 'community', 'contact'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -463,16 +589,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-[#F5F5F7] transition-colors duration-500 overflow-x-hidden">
-      <ThemeToggle theme={theme} setTheme={setTheme} />
+      <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+      
       <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
       
       <Hero />
       <Work />
       <Journey />
       <About />
+      <Community />
       <Contact />
 
-      <footer className="py-8 text-center text-sm text-gray-600 dark:text-gray-700 border-t border-white/5">
+      <footer className="py-8 text-center text-sm text-gray-600 dark:text-gray-700 border-t border-gray-200 dark:border-white/5">
         <p>© 2025 Parag Sharma. Crafted with precision.</p>
       </footer>
     </div>
