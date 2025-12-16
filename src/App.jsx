@@ -98,7 +98,7 @@ const PROJECTS = [
     description: "A collaborative marketplace bridging the gap between micro-influencers and brands. Features automated matchmaking and secure campaign management.",
     stats: "Building",
     tech: ["MongoDB", "Express.js", "React", "Node.js"],
-    repo: "https://github.com/p09s/LinkFluence" 
+    repo: "https://github.com/p09s/creator-brand" 
   },
   {
     title: "Orbcura",
@@ -106,7 +106,7 @@ const PROJECTS = [
     description: "Assistive app for the visually impaired featuring real-time AI image detection and voice-guided UPI payments.",
     stats: "Patent Published", 
     tech: ["Flutter", "ML Kit", "UPI API", "Firebase"],
-    repo: "https://github.com/p09s/Orbcura" 
+    repo: "https://github.com/p09s/Orbcura-App" 
   },
   {
     title: "Silent Voice",
@@ -122,15 +122,7 @@ const PROJECTS = [
     description: "Community-driven flood management system with crowd-sourced reporting and interactive risk mapping.",
     stats: "Real-time Analytics",
     tech: ["Flutter", "Google Maps API", "Firebase"],
-    repo: "https://github.com/p09s/AquaWatch" 
-  },
-  {
-    title: "HerSphere",
-    category: "HealthTech",
-    description: "Pregnancy health companion with ML-based trimester recommendations.",
-    stats: "First Project",
-    tech: ["Flutter", "Analytics", "Firebase"],
-    repo: "https://github.com/p09s/HerSphere"
+    repo: "https://github.com/p09s/Aqua-Watch-App" 
   }
 ];
 
