@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Github, Linkedin, Mail, Moon, Sun, Home, Briefcase, 
   MapPin, User, Send, Heart, Trophy, Users, Mic, Code, 
-  Youtube, Play, Lightbulb, Cpu, ExternalLink, FileText
+  Youtube, Play, Lightbulb, Cpu, ExternalLink, FileText,
+  ArrowRight
 } from 'lucide-react';
 
 // ==================== CSS FOR HIDING SCROLLBAR ====================
@@ -163,7 +164,31 @@ const useLiveTime = () => {
   return time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 };
 
-// ==================== THEME TOGGLE ====================
+// ==================== COMPONENTS ====================
+
+const SwipeHint = ({ isVisible }) => (
+  <AnimatePresence>
+    {isVisible && (
+      <motion.div
+        initial={{ opacity: 0, x: 10 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 10, scale: 0.95 }}
+        transition={{ duration: 0.3 }}
+        className="md:hidden absolute right-0 -bottom-10 z-10"
+      >
+        <motion.div 
+          animate={{ x: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900 dark:bg-white text-white dark:text-black shadow-lg"
+        >
+          <span className="text-xs font-bold uppercase tracking-wider">Swipe</span>
+          <ArrowRight size={14} />
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
+
 const ThemeToggle = ({ theme, toggleTheme }) => (
   <motion.button
     onClick={toggleTheme}
@@ -317,79 +342,96 @@ const Hero = () => {
 };
 
 // ==================== WORK ====================
-const Work = () => (
-  <section id="work" className="min-h-screen py-20 md:py-32 px-6">
-    <div className="max-w-7xl mx-auto">
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-4xl md:text-5xl lg:text-7xl font-bold mb-12 md:mb-16 tracking-tight text-gray-900 dark:text-white"
-      >
-        Selected Work
-      </motion.h2>
+const Work = () => {
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
 
-      {/* FIXED: 'no-scrollbar' class added */}
-      <div className="flex overflow-x-auto no-scrollbar gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 md:mx-0 md:px-0">
-        {PROJECTS.map((project, i) => (
-          <motion.div
-            key={project.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="min-w-[85vw] md:min-w-0 snap-center group relative p-6 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-all flex flex-col justify-between"
+  const handleScroll = (e) => {
+    if (e.target.scrollLeft < 20) {
+      setShowSwipeHint(true);
+    } else {
+      setShowSwipeHint(false);
+    }
+  };
+
+  return (
+    <section id="work" className="min-h-screen py-20 md:py-32 px-6">
+      <div className="max-w-7xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl lg:text-7xl font-bold mb-12 md:mb-16 tracking-tight text-gray-900 dark:text-white"
+        >
+          Selected Work
+        </motion.h2>
+
+        <div className="relative">
+          <div 
+            onScroll={handleScroll}
+            className="flex overflow-x-auto no-scrollbar gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 md:mx-0 md:px-0"
           >
-            <div>
-              <div className="flex justify-between items-start mb-4">
-                <span className="text-xs font-mono text-gray-500 dark:text-gray-400 uppercase tracking-wider">{project.category}</span>
-                {project.stats && (
-                  <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap ${
-                    project.stats.includes("Patent") 
-                      ? "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
-                      : "bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white"
-                  }`}>
-                    {project.stats}
-                  </span>
-                )}
-              </div>
-              
-              <div className="flex justify-between items-center mb-3">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                  {project.title}
-                </h3>
-                {project.repo && (
-                  <a 
-                    href={project.repo} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="p-2 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors text-gray-900 dark:text-white"
-                    title="View Source Code"
-                  >
-                    <Github size={18} />
-                  </a>
-                )}
-              </div>
-              
-              {/* FIXED: 'line-clamp-3' added */}
-              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 overflow-hidden text-ellipsis">
-                {project.description}
-              </p>
-            </div>
+            {PROJECTS.map((project, i) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="min-w-[85vw] md:min-w-0 snap-center group relative p-6 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-4">
+                    <span className="text-xs font-mono text-gray-500 dark:text-gray-400 uppercase tracking-wider">{project.category}</span>
+                    {project.stats && (
+                      <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap ${
+                        project.stats.includes("Patent") 
+                          ? "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
+                          : "bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white"
+                      }`}>
+                        {project.stats}
+                      </span>
+                    )}
+                  </div>
+                  
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                      {project.title}
+                    </h3>
+                    {project.repo && (
+                      <a 
+                        href={project.repo} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="p-2 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors text-gray-900 dark:text-white"
+                        title="View Source Code"
+                      >
+                        <Github size={18} />
+                      </a>
+                    )}
+                  </div>
+                  
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 overflow-hidden text-ellipsis">
+                    {project.description}
+                  </p>
+                </div>
 
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {project.tech.map(tech => (
-                <span key={tech} className="px-3 py-1 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/5 text-xs font-medium text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {project.tech.map(tech => (
+                    <span key={tech} className="px-3 py-1 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/5 text-xs font-medium text-gray-600 dark:text-gray-300 whitespace-nowrap">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <SwipeHint isVisible={showSwipeHint} />
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 // ==================== JOURNEY ====================
 const Journey = () => (
@@ -429,177 +471,223 @@ const Journey = () => (
   </section>
 );
 
-// ==================== ABOUT ====================
-const About = () => (
-  <section id="about" className="min-h-screen py-20 md:py-32 px-6 flex items-center">
-    <div className="max-w-7xl mx-auto w-full">
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-4xl md:text-5xl lg:text-7xl font-bold mb-12 md:mb-16 tracking-tight text-gray-900 dark:text-white"
-      >
-        About
-      </motion.h2>
+// ==================== ABOUT (UPDATED TEXT) ====================
+const About = () => {
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+  const handleScroll = (e) => {
+    if (e.target.scrollLeft < 20) {
+      setShowSwipeHint(true);
+    } else {
+      setShowSwipeHint(false);
+    }
+  };
+
+  return (
+    <section id="about" className="min-h-screen py-20 md:py-32 px-6 flex items-center">
+      <div className="max-w-7xl mx-auto w-full">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="md:col-span-8 p-8 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex flex-col justify-center"
+          className="text-4xl md:text-5xl lg:text-7xl font-bold mb-12 md:mb-16 tracking-tight text-gray-900 dark:text-white"
         >
-          <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">The Person Behind the Code</h3>
-          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            {PROFILE.bio}
-          </p>
-          <p className="mt-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
-            I believe that true engineering isn't just about writing functions—it's about crafting experiences. Whether it's organizing national hackathons or editing the perfect frame for an anime review, I obsess over the details.
-          </p>
-        </motion.div>
+          About
+        </motion.h2>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="md:col-span-4 md:row-span-2 relative rounded-3xl overflow-hidden min-h-[300px] md:min-h-[400px] border border-gray-200 dark:border-white/10 group"
-        >
-          <img 
-            src="/pic.png" 
-            alt="Parag Sharma" 
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-6 left-6 text-white">
-            <p className="font-mono text-sm opacity-80">Based in</p>
-            <p className="text-xl font-bold">{PROFILE.location}</p>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="md:col-span-4 p-6 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 group relative overflow-hidden hover:border-red-500/30 hover:shadow-[0_0_30px_-10px_rgba(220,38,38,0.3)] transition-all duration-300"
-        >
-          <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity text-red-500">
-            <Youtube size={100} />
-          </div>
+        <div className="flex flex-col gap-6 md:grid md:grid-cols-12 relative">
           
-          <div className="relative z-10">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-gray-900 dark:bg-white rounded-lg text-white dark:text-black group-hover:text-red-600 transition-colors">
-                <Play size={20} fill="currentColor" />
-              </div>
-              <span className="font-bold text-gray-900 dark:text-white tracking-wider text-sm">CONTENT CREATOR</span>
-            </div>
-            
-            <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">DAEMON</h4>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-              Merging tech insights with anime culture. Storytelling through edits and reviews.
-            </p>
-            
-            <a 
-              href="https://youtube.com/@DaemonPOV" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 dark:text-white hover:text-red-600 dark:hover:text-red-400 transition-colors underline-offset-4 group/link"
-            >
-              Visit Channel <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform" />
-            </a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="md:col-span-4 p-6 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 group hover:border-blue-500/30 hover:shadow-[0_0_30px_-10px_rgba(37,99,235,0.3)] transition-all duration-300"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 rounded-lg bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              <Cpu size={20} />
-            </div>
-            <h4 className="text-xl font-bold text-gray-900 dark:text-white">Tech Arsenal</h4>
-          </div>
-          
-          <div className="flex flex-wrap gap-2">
-            {["C++", "Java", "Python", "JavaScript", "Flutter", "React.js", "Tailwind", "Node.js", "Firebase", "Git", "Salesforce CRM", "Jira", "Slack", "OpenCV", "TensorFlow", "AWS", "Apex", "Lightning Components"].map((tech) => (
-              <span key={tech} className="px-3 py-1 bg-white dark:bg-white/10 rounded-lg text-xs font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/5">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-
-      </div>
-    </div>
-  </section>
-);
-
-// ==================== COMMUNITY ====================
-const Community = () => (
-  <section id="community" className="min-h-screen py-20 md:py-32 px-6">
-    <div className="max-w-7xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6"
-      >
-        <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Community<br />Impact
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400 max-w-md text-lg text-right md:text-left">
-          Empowering the next generation of developers through leadership, mentorship, and large-scale events.
-        </p>
-      </motion.div>
-
-      {/* FIXED: 'no-scrollbar' class added */}
-      <div className="flex overflow-x-auto no-scrollbar gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0 md:mx-0 md:px-0">
-        {COMMUNITY_DATA.map((item, i) => (
+          {/* 1. Bio Card */}
           <motion.div
-            key={i}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="min-w-[85vw] md:min-w-0 snap-center p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/30 transition-all group flex flex-col justify-between h-full"
+            className="md:col-span-8 p-6 md:p-8 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex flex-col justify-center"
           >
-            <div>
-              <div className="flex justify-between items-start mb-6">
-                <div className="p-3 rounded-full bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white">
-                  <item.icon size={20} />
-                </div>
-                <span className="text-xs font-mono text-gray-500 dark:text-gray-500">{item.period}</span>
+            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">The Person Behind the Code</h3>
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+              {PROFILE.bio}
+            </p>
+            <p className="mt-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+              I believe that true engineering isn't just about writing functions—it's about crafting experiences. Whether it's organizing national hackathons or editing the perfect frame for an anime review, I obsess over the details.
+            </p>
+          </motion.div>
+
+          {/* 2. Scrollable Section for Mobile */}
+          <div 
+            className="flex overflow-x-auto gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory no-scrollbar md:contents"
+            onScroll={handleScroll}
+          >
+            {/* Photo Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="min-w-[85vw] md:min-w-0 md:col-span-4 md:row-span-2 relative rounded-3xl overflow-hidden min-h-[300px] md:min-h-[400px] border border-gray-200 dark:border-white/10 group snap-center"
+            >
+              <img 
+                src="/pic.png" 
+                alt="Parag Sharma" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white">
+                <p className="font-mono text-sm opacity-80">Based in</p>
+                <p className="text-xl font-bold">{PROFILE.location}</p>
+              </div>
+            </motion.div>
+
+            {/* Youtube Card (UPDATED TEXT) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="min-w-[85vw] md:min-w-0 md:col-span-4 p-6 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 group relative overflow-hidden hover:border-red-500/30 hover:shadow-[0_0_30px_-10px_rgba(220,38,38,0.3)] transition-all duration-300 snap-center flex flex-col justify-center"
+            >
+              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity text-red-500">
+                <Youtube size={100} />
               </div>
               
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{item.role}</h3>
-              <div className="text-sm font-medium text-purple-600 dark:text-purple-400 mb-4">{item.org}</div>
-              
-              {/* FIXED: 'line-clamp-3' added */}
-              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 overflow-hidden text-ellipsis">
-                {item.description}
-              </p>
-            </div>
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-gray-900 dark:bg-white rounded-lg text-white dark:text-black group-hover:text-red-600 transition-colors">
+                    <Play size={20} fill="currentColor" />
+                  </div>
+                  <span className="font-bold text-gray-900 dark:text-white tracking-wider text-sm">CONTENT CREATOR</span>
+                </div>
+                
+                <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">DAEMON</h4>
+                
+                {/* --- CHANGED TEXT HERE --- */}
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                  Merging technical precision with anime culture. I create high-octane edits and deep-dive reviews for series like 
+                  <span className="text-gray-900 dark:text-white font-medium"> Jujutsu Kaisen</span> and 
+                  <span className="text-gray-900 dark:text-white font-medium"> Chainsaw Man</span>. 
+                  This is where my engineering logic meets creative storytelling—analyzing frames with the same detail I apply to code.
+                </p>
+                
+                <a 
+                  href="https://youtube.com/@DaemonPOV" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 dark:text-white hover:text-red-600 dark:hover:text-red-400 transition-colors underline-offset-4 group/link"
+                >
+                  Visit Channel <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
 
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {item.tags.map(tag => (
-                <span key={tag} className="px-2 py-1 text-[10px] uppercase tracking-wider font-semibold rounded-md bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/5">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+            {/* Tech Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="min-w-[85vw] md:min-w-0 md:col-span-4 p-6 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 group hover:border-blue-500/30 hover:shadow-[0_0_30px_-10px_rgba(37,99,235,0.3)] transition-all duration-300 snap-center"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <Cpu size={20} />
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white">Tech Arsenal</h4>
+              </div>
+              
+              <div className="flex flex-wrap gap-2">
+                {["C++", "Java", "Python", "JavaScript", "Flutter", "React.js", "Tailwind", "Node.js", "Firebase", "Git", "Salesforce CRM", "Jira", "Slack", "OpenCV", "TensorFlow", "AWS", "Apex", "Lightning Components"].map((tech) => (
+                  <span key={tech} className="px-3 py-1 bg-white dark:bg-white/10 rounded-lg text-xs font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/5">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          <SwipeHint isVisible={showSwipeHint} />
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
+
+// ==================== COMMUNITY ====================
+const Community = () => {
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
+
+  const handleScroll = (e) => {
+    // Logic updated to allow reappearing
+    if (e.target.scrollLeft < 20) {
+      setShowSwipeHint(true);
+    } else {
+      setShowSwipeHint(false);
+    }
+  };
+
+  return (
+    <section id="community" className="min-h-screen py-20 md:py-32 px-6">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Community<br />Impact
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-md text-lg text-right md:text-left">
+            Empowering the next generation of developers through leadership, mentorship, and large-scale events.
+          </p>
+        </motion.div>
+
+        <div className="relative">
+          <div 
+            onScroll={handleScroll}
+            className="flex overflow-x-auto no-scrollbar gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0 md:mx-0 md:px-0"
+          >
+            {COMMUNITY_DATA.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="min-w-[85vw] md:min-w-0 snap-center p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/30 transition-all group flex flex-col justify-between h-full"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="p-3 rounded-full bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white">
+                      <item.icon size={20} />
+                    </div>
+                    <span className="text-xs font-mono text-gray-500 dark:text-gray-500">{item.period}</span>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{item.role}</h3>
+                  <div className="text-sm font-medium text-purple-600 dark:text-purple-400 mb-4">{item.org}</div>
+                  
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 overflow-hidden text-ellipsis">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {item.tags.map(tag => (
+                    <span key={tag} className="px-2 py-1 text-[10px] uppercase tracking-wider font-semibold rounded-md bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/5">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <SwipeHint isVisible={showSwipeHint} />
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // ==================== CONTACT ====================
 const Contact = () => {
@@ -612,7 +700,6 @@ const Contact = () => {
   };
 
   return (
-    // ROLLED BACK: Removed 'pb-32'
     <section id="contact" className="min-h-screen py-20 md:py-32 px-6 flex items-center">
       <div className="max-w-6xl mx-auto w-full">
         <motion.div
@@ -627,12 +714,10 @@ const Contact = () => {
 
           <motion.button
             onClick={copyEmail}
-            // FIXED: 'text-sm md:text-2xl' ensures it fits on mobile
             className="group relative px-8 md:px-12 py-4 md:py-6 text-sm md:text-2xl font-bold rounded-full bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-100 transition-colors w-full md:w-auto overflow-hidden"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {/* FIXED: 'truncate' instead of 'break-all' for cleaner look */}
             <span className="truncate">{PROFILE.email}</span>
             <AnimatePresence>
               {copied && (
@@ -695,7 +780,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-[#F5F5F7] transition-colors duration-500 overflow-x-hidden">
-      {/* FIXED: Injected style for hiding scrollbars */}
       <style>{globalStyles}</style>
 
       <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
@@ -709,7 +793,6 @@ export default function App() {
       <Community />
       <Contact />
 
-      {/* ROLLED BACK: Removed 'pb-24' */}
       <footer className="py-8 text-center text-sm text-gray-600 dark:text-gray-700 border-t border-gray-200 dark:border-white/5 px-6">
         <p>© 2025 Parag Sharma. Crafted with precision.</p>
       </footer>
