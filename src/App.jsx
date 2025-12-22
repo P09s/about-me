@@ -37,15 +37,15 @@ const SOCIALS = [
 const EXPERIENCES = [
   {
     company: "Google Developer Groups (GDG) on Campus",
-    role: "President",
+    role: "President & Engineeing Lead",
     period: "Sept 2024 - July 2025",
-    description: "Led 30+ developers to build SD+AI projects. Organized tech workshops for 1000+ participants. Established Git-based workflows and Agile practices."
+    description: "Led a cross-functional team of 30+ engineers and designers to deliver 10+ production-grade web/AI projects. Directed project management workflows using Agile methodologies, ensuring on-time delivery of key milestones. Established rigorous code review protocols and Git-based version control standards across student teams. Owned end-to-end delivery of award-winning systems including Silent Voice (Ideathon Winner) and Orbcura."
   },
   {
     company: "TriColor Initiatives Pvt. Ltd.",
-    role: "Salesforce Intern",
+    role: "Software Engineer Intern (Salesforce Platform)",
     period: "May 2024 - Jun 2024",
-    description: "Developed AI-powered customer insights dashboards and automated CRM flows using Apex and Lightning Components."
+    description: "Designed and implemented frontend interfaces and backend automation using Lightning Web Components and Apex. Improved operational efficiency by 25% by building scalable RESTful API integrations for secure data exchange. Developed analytics dashboards using Salesforce reporting and AI tools to improve data visibility for stakeholders. Collaborated on debugging, performance tuning, and production support for live CRM environments."
   }
 ];
 
