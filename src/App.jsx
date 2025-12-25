@@ -793,8 +793,8 @@ export default function App() {
       <Community />
       <Contact />
 
-      <footer className="py-8 text-center text-sm text-gray-600 dark:text-gray-700 border-t border-gray-200 dark:border-white/5 px-6">
-        <p>© 2025 Parag Sharma. Crafted with precision.</p>
+      <footer className="py-8 flex justify-end text-sm hidden md:block text-gray-600 dark:text-gray-700 border-t border-gray-200 dark:border-white/5 px-6">
+        <p>© 2025 Parag Sharma.</p>
       </footer>
     </div>
   );
