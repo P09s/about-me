@@ -310,7 +310,7 @@ const Hero = () => {
             className="flex flex-wrap justify-center gap-4 mt-12 items-center"
           >
             <motion.a
-              href="/Parag_Sharma_Resume.pdf"
+              href="/Parag_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 dark:bg-white text-white dark:text-black font-medium border border-transparent hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors shadow-lg"
