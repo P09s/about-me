@@ -4,7 +4,7 @@ import {
   Github, Linkedin, Mail, Moon, Sun, Home, Briefcase, 
   MapPin, User, Send, Heart, Trophy, Users, Mic, Code, 
   Youtube, Play, Lightbulb, Cpu, ExternalLink, FileText,
-  ArrowRight
+  ArrowRight, Star, GitBranch
 } from 'lucide-react';
 
 // ==================== CSS FOR HIDING SCROLLBAR ====================
@@ -37,7 +37,7 @@ const SOCIALS = [
 const EXPERIENCES = [
   {
     company: "Google Developer Groups (GDG) on Campus",
-    role: "President & Engineeing Lead",
+    role: "President & Engineering Lead",
     period: "Sept 2024 - July 2025",
     description: "Led a cross-functional team of 30+ engineers and designers to deliver 10+ production-grade web/AI projects. Directed project management workflows using Agile methodologies, ensuring on-time delivery of key milestones. Established rigorous code review protocols and Git-based version control standards across student teams. Owned end-to-end delivery of award-winning systems including Silent Voice (Ideathon Winner) and Orbcura."
   },
@@ -47,6 +47,98 @@ const EXPERIENCES = [
     period: "May 2024 - Jun 2024",
     description: "Designed and implemented frontend interfaces and backend automation using Lightning Web Components and Apex. Improved operational efficiency by 25% by building scalable RESTful API integrations for secure data exchange. Developed analytics dashboards using Salesforce reporting and AI tools to improve data visibility for stakeholders. Collaborated on debugging, performance tuning, and production support for live CRM environments."
   }
+];
+
+// ==================== AWARDS DATA ====================
+const AWARDS = [
+  {
+    title: "Good Idea Award Winner",
+    organization: "Ministry of Digital Affairs, Taiwan",
+    date: "Nov 2024",
+    prize: "$40,000 NT",
+    description: "International recognition for innovative AI-accessibility solution. Won against global competition for Silent Voice project.",
+  },
+  {
+    title: "Top 5 National Finalist",
+    organization: "Hack4Change by Google & Charcha",
+    date: "Aug 2024",
+    prize: "3000+ Teams",
+    description: "Ranked in top 5 out of 3000+ teams nationwide for building scalable solutions addressing real-world challenges.",
+  },
+  {
+    title: "2nd Runner-Up",
+    organization: "Ideathon 2025, Ambala College of Engineering",
+    date: "Feb 2025",
+    prize: "3rd Prize",
+    description: "Recognized for innovative approach to real-time sign language translation using computer vision.",
+  },
+  {
+    title: "National Innovation Award Runner-Up",
+    organization: "NIA'24, P.I.E.T",
+    date: "Nov 2024",
+    prize: "2nd Position",
+    description: "Secured runner-up position for innovative technical solution in national-level competition.",
+  },
+];
+
+// ==================== OPEN-SOURCE DATA ====================
+const OPEN_SOURCE = [
+  {
+    title: "TheAlgorithms/Python",
+    stars: "217k+",
+    role: "Contributor",
+    date: "2024",
+    contribution: "Implemented O(n) Sliding Window Maximum algorithm using Monotonic Deque",
+    tech: ["Python", "Data Structures", "Algorithms"],
+    url: "https://github.com/TheAlgorithms/Python",
+    impact: "Merged to 217k+ star project"
+  },
+  {
+    title: "Zomato/espresso",
+    role: "Contributor",
+    date: "2024",
+    contribution: "Authored production-grade documentation for ZeroLogger integration and observability best practices",
+    tech: ["Documentation", "Observability", "Backend"],
+    url: "https://github.com/zomato/espresso",
+    impact: "Production deployment across teams"
+  },
+  {
+    title: "Agentscope/Trinity-RFT",
+    role: "Contributor",
+    date: "2024",
+    contribution: "Improved onboarding by adding CPU-only quick-start guide and clarifying hardware requirements",
+    tech: ["Documentation", "DevOps", "Guides"],
+    url: "https://github.com/agentscope/trinity-rft",
+    impact: "Better DX for 1000+ users"
+  },
+];
+
+// ==================== SKILLS DATA ====================
+const SKILLS_CATEGORIES = [
+  {
+    category: "Languages",
+    skills: ["C++", "Python", "JavaScript", "SQL", "Dart", "Java"],
+  },
+  {
+    category: "Frontend",
+    skills: ["React.js", "Flutter", "Tailwind CSS", "Framer Motion", "HTML/CSS"],
+  },
+  {
+    category: "Backend & APIs",
+    skills: ["Node.js", "Express.js", "REST APIs", "Salesforce (Apex, LWC)", "Firebase"],
+  },
+  {
+    category: "Databases & Tools",
+    skills: ["MongoDB", "Firestore", "PostgreSQL", "Git/GitHub", "Agile/Jira"],
+  },
+  {
+    category: "AI/ML & Data",
+    skills: ["TensorFlow", "OpenCV", "ML Kit", "Computer Vision", "LeetCode"],
+  },
+  {
+    category: "Platform & Cloud",
+    skills: ["Google Cloud", "AWS", "Salesforce CRM", "Firebase", "USSD/UPI"],
+  },
 ];
 
 const COMMUNITY_DATA = [
@@ -96,7 +188,7 @@ const PROJECTS = [
   {
     title: "LinkFluence",
     category: "Web Development & SaaS",
-    description: "A collaborative marketplace bridging the gap between micro-influencers and brands. Features automated matchmaking and secure campaign management.",
+    description: "A collaborative marketplace bridging the gap between micro-influencers and brands. Features automated matchmaking and secure campaign management with scalable backend supporting 1000+ concurrent users.",
     stats: "Building",
     tech: ["MongoDB", "Express.js", "React", "Node.js"],
     repo: "https://github.com/p09s/creator-brand" 
@@ -104,7 +196,7 @@ const PROJECTS = [
   {
     title: "Orbcura",
     category: "Accessibility & AI",
-    description: "Assistive app for the visually impaired featuring real-time AI image detection and voice-guided UPI payments.",
+    description: "Assistive app for the visually impaired featuring real-time AI image detection and voice-guided UPI payments. Engineered USSD-based UPI layer enabling offline transactions without app permissions. Patent published.",
     stats: "Patent Published", 
     tech: ["Flutter", "ML Kit", "UPI API", "Firebase"],
     repo: "https://github.com/p09s/Orbcura-App" 
@@ -112,7 +204,7 @@ const PROJECTS = [
   {
     title: "Silent Voice",
     category: "AI & Computer Vision",
-    description: "AI-powered sign language translation system using computer vision and speech synthesis. Winner, Ideathon Taiwan 2025.",
+    description: "International award-winning sign language translation system using computer vision and speech synthesis. Enables seamless communication between hearing-impaired users and non-sign speakers. Winner of Taiwan Good Idea Award.",
     stats: "Winner, Ideathon Taiwan",
     tech: ["Python", "OpenCV", "TensorFlow", "Flutter"],
     repo: "https://github.com/p09s/SilentVoice" 
@@ -120,7 +212,7 @@ const PROJECTS = [
   {
     title: "Aqua Watch",
     category: "Disaster Management",
-    description: "Community-driven flood management system with crowd-sourced reporting and interactive risk mapping.",
+    description: "Community-driven flood management system with crowd-sourced reporting and interactive risk mapping. Enables citizens to contribute hazard reports and view live risk zones using Google Maps integration.",
     stats: "Real-time Analytics",
     tech: ["Flutter", "Google Maps API", "Firebase"],
     repo: "https://github.com/p09s/Aqua-Watch-App" 
@@ -215,6 +307,9 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   const navItems = [
     { id: 'hero', icon: Home, label: 'Home' },
     { id: 'work', icon: Briefcase, label: 'Work' },
+    { id: 'awards', icon: Trophy, label: 'Awards' },
+    { id: 'skills', icon: Cpu, label: 'Skills' },
+    { id: 'opensource', icon: GitBranch, label: 'Open Source' },
     { id: 'journey', icon: MapPin, label: 'Journey' },
     { id: 'about', icon: User, label: 'About' },
     { id: 'community', icon: Heart, label: 'Community' },
@@ -225,7 +320,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
     <motion.nav
       initial={{ y: 100 }}
       animate={{ y: 0 }}
-      className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50 px-4 md:px-6 py-3 md:py-4 rounded-full bg-white/80 dark:bg-black/30 backdrop-blur-xl border border-gray-300 dark:border-white/10 shadow-2xl max-w-[90vw] overflow-x-auto no-scrollbar"
+      className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50 px-4 md:px-6 py-3 md:py-4 rounded-full bg-white/80 dark:bg-black/30 backdrop-blur-xl border border-gray-300 dark:border-white/10 shadow-2xl max-w-[95vw] overflow-x-auto no-scrollbar"
     >
       <div className="flex items-center gap-1 md:gap-2">
         {navItems.map(({ id, icon: Icon, label }) => (
@@ -235,7 +330,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
               setActiveSection(id);
               document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className={`p-2 md:p-3 rounded-xl transition-colors ${
+            className={`p-2 md:p-3 rounded-xl transition-colors whitespace-nowrap ${
               activeSection === id ? 'bg-gray-200 dark:bg-white/20' : 'hover:bg-gray-100 dark:hover:bg-white/10'
             }`}
             whileHover={{ scale: 1.2, y: -8 }}
@@ -381,12 +476,17 @@ const Work = () => {
               >
                 <div>
                   <div className="flex justify-between items-start mb-4">
-                    <span className="text-xs font-mono text-gray-500 dark:text-gray-400 uppercase tracking-wider">{project.category}</span>
+                    {/* Highlighted Subheading: Category */}
+                    <span className="text-xs font-bold font-mono text-purple-600 dark:text-purple-400 uppercase tracking-wider">{project.category}</span>
+                    
                     {project.stats && (
                       <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap ${
                         project.stats.includes("Patent") 
-                          ? "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
-                          : "bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white"
+                          // Highlighted Patent Text/Badge
+                          ? "bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30"
+                          : project.stats.includes("Winner")
+                          ? "bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white border border-gray-300 dark:border-white/20"
+                          : "bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white border border-gray-300 dark:border-white/20"
                       }`}>
                         {project.stats}
                       </span>
@@ -410,7 +510,7 @@ const Work = () => {
                     )}
                   </div>
                   
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 overflow-hidden text-ellipsis">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
                     {project.description}
                   </p>
                 </div>
@@ -426,6 +526,231 @@ const Work = () => {
             ))}
           </div>
           
+          <SwipeHint isVisible={showSwipeHint} />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ==================== AWARDS SECTION ====================
+const Awards = () => {
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
+
+  const handleScroll = (e) => {
+    if (e.target.scrollLeft < 20) {
+      setShowSwipeHint(true);
+    } else {
+      setShowSwipeHint(false);
+    }
+  };
+
+  return (
+    <section id="awards" className="min-h-screen py-20 md:py-32 px-6">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 md:mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+            Recognition & Awards
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl text-lg">
+            Celebrating achievements in innovation, engineering excellence, and impact at national and international levels.
+          </p>
+        </motion.div>
+
+        <div className="relative">
+          <div 
+            onScroll={handleScroll}
+            className="flex overflow-x-auto no-scrollbar gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 md:mx-0 md:px-0"
+          >
+            {AWARDS.map((award, i) => (
+              <motion.div
+                key={award.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="min-w-[85vw] md:min-w-0 snap-center relative p-6 md:p-8 rounded-3xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 hover:border-gray-300 dark:hover:border-white/20 transition-all"
+              >
+                <div className="mb-6">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                    {award.title}
+                  </h3>
+                  
+                  {/* Highlighted Subheading: Organization */}
+                  <p className="text-sm md:text-base font-bold text-purple-600 dark:text-purple-400 mb-3">
+                    {award.organization}
+                  </p>
+
+                  <div className="flex flex-col gap-2 mb-4">
+                    <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
+                      <span className="font-medium">Date:</span> {award.date}
+                    </div>
+                    <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
+                      <span className="font-medium">Prize/Recognition:</span> {award.prize}
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
+                    {award.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <SwipeHint isVisible={showSwipeHint} />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ==================== SKILLS SECTION ====================
+const Skills = () => {
+  return (
+    <section id="skills" className="min-h-screen py-20 md:py-32 px-6">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 md:mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+            Technical Arsenal
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl text-lg">
+            A comprehensive toolkit spanning full-stack development, cloud platforms, AI/ML, and enterprise systems.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {SKILLS_CATEGORIES.map((category, idx) => (
+            <motion.div
+              key={category.category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="p-6 md:p-8 rounded-3xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-all"
+            >
+              {/* Highlighted Subheading: Category Title */}
+              <h3 className="text-lg md:text-xl font-bold text-purple-600 dark:text-purple-400 mb-6 uppercase tracking-wider">
+                {category.category}
+              </h3>
+
+              <div className="flex flex-wrap gap-3">
+                {category.skills.map((skill, i) => (
+                  <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.05 + i * 0.05 }}
+                    className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-white/10 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 text-xs md:text-sm font-medium hover:bg-gray-200 dark:hover:bg-white/20 transition-colors"
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ==================== OPEN SOURCE SECTION ====================
+const OpenSource = () => {
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
+
+  const handleScroll = (e) => {
+    if (e.target.scrollLeft < 20) {
+      setShowSwipeHint(true);
+    } else {
+      setShowSwipeHint(false);
+    }
+  };
+
+  return (
+    <section id="opensource" className="min-h-screen py-20 md:py-32 px-6">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 md:mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+            Open Source Impact
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl text-lg">
+            Contributing to projects trusted by millions. Code merged to repositories with 217k+ stars.
+          </p>
+        </motion.div>
+
+        <div className="relative">
+          <div 
+            onScroll={handleScroll}
+            className="flex overflow-x-auto no-scrollbar gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-1 lg:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0 md:mx-0 md:px-0"
+          >
+            {OPEN_SOURCE.map((project, i) => (
+              <motion.a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="min-w-[85vw] md:min-w-0 snap-center relative p-6 md:p-8 rounded-3xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-all flex flex-col justify-between cursor-pointer"
+              >
+                <div>
+                  <div className="flex items-start justify-between mb-6">
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+                      {project.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-xs md:text-sm font-semibold text-gray-600 dark:text-gray-400 mb-4">
+                    {project.role} • {project.date}
+                  </p>
+
+                  <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed mb-6">
+                    {project.contribution}
+                  </p>
+
+                  {/* Highlighted Merged/Impact Statement Container */}
+                  <div className="p-3 rounded-lg bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-500/20 mb-6">
+                    <p className="text-xs md:text-sm font-medium text-purple-700 dark:text-purple-300">
+                      {project.impact}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {project.tech.map(tech => (
+                    <span key={tech} className="px-3 py-1 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/5 text-xs font-medium text-gray-600 dark:text-gray-300">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white hover:translate-x-1 transition-transform">
+                  View Repository
+                  <ExternalLink size={14} />
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
           <SwipeHint isVisible={showSwipeHint} />
         </div>
       </div>
@@ -471,7 +796,7 @@ const Journey = () => (
   </section>
 );
 
-// ==================== ABOUT (UPDATED TEXT) ====================
+// ==================== ABOUT ====================
 const About = () => {
   const [showSwipeHint, setShowSwipeHint] = useState(true);
 
@@ -502,7 +827,7 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-8 p-6 md:p-8 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex flex-col justify-center"
+            className="md:col-span-8 p-6 md:p-8 rounded-3xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10"
           >
             <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">The Person Behind the Code</h3>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -538,34 +863,31 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* Youtube Card (UPDATED TEXT) */}
+            {/* Youtube Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="min-w-[85vw] md:min-w-0 md:col-span-4 p-6 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 group relative overflow-hidden hover:border-red-500/30 hover:shadow-[0_0_30px_-10px_rgba(220,38,38,0.3)] transition-all duration-300 snap-center flex flex-col justify-center"
+              className="min-w-[85vw] md:min-w-0 md:col-span-4 p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 group relative overflow-hidden hover:border-red-500/30 hover:shadow-[0_0_30px_-10px_rgba(220,38,38,0.3)] transition-all duration-300 snap-center flex flex-col justify-center"
             >
-              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity text-red-500">
+              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity text-red-500">
                 <Youtube size={100} />
               </div>
               
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-gray-900 dark:bg-white rounded-lg text-white dark:text-black group-hover:text-red-600 transition-colors">
+                  <div className="p-2 bg-gray-900 dark:bg-white rounded-lg text-white dark:text-black group-hover:bg-red-600 dark:group-hover:bg-red-600 transition-colors">
                     <Play size={20} fill="currentColor" />
                   </div>
-                  <span className="font-bold text-gray-900 dark:text-white tracking-wider text-sm">CONTENT CREATOR</span>
+                  {/* Highlighted Tag: Content Creator */}
+                  <span className="font-bold text-purple-600 dark:text-purple-400 tracking-wider text-sm">CONTENT CREATOR</span>
                 </div>
                 
                 <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">DAEMON</h4>
                 
-                {/* --- CHANGED TEXT HERE --- */}
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  Merging technical precision with anime culture. I create high-octane edits and deep-dive reviews for series like 
-                  <span className="text-gray-900 dark:text-white font-medium"> Jujutsu Kaisen</span> and 
-                  <span className="text-gray-900 dark:text-white font-medium"> Chainsaw Man</span>. 
-                  This is where my engineering logic meets creative storytelling—analyzing frames with the same detail I apply to code.
+                  Merging technical precision with anime culture. I create high-octane edits and deep-dive reviews for series like Jujutsu Kaisen and Chainsaw Man. This is where my engineering logic meets creative storytelling.
                 </p>
                 
                 <a 
@@ -585,18 +907,18 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="min-w-[85vw] md:min-w-0 md:col-span-4 p-6 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 group hover:border-blue-500/30 hover:shadow-[0_0_30px_-10px_rgba(37,99,235,0.3)] transition-all duration-300 snap-center"
+              className="min-w-[85vw] md:min-w-0 md:col-span-4 p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 group hover:border-blue-500/30 hover:shadow-[0_0_30px_-10px_rgba(37,99,235,0.3)] transition-all duration-300 snap-center"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <div className="p-2 rounded-lg bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   <Cpu size={20} />
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white">Tech Arsenal</h4>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white">Tech Stack</h4>
               </div>
               
               <div className="flex flex-wrap gap-2">
-                {["C++", "Java", "Python", "JavaScript", "Flutter", "React.js", "Tailwind", "Node.js", "Firebase", "Git", "Salesforce CRM", "Jira", "Slack", "OpenCV", "TensorFlow", "AWS", "Apex", "Lightning Components"].map((tech) => (
-                  <span key={tech} className="px-3 py-1 bg-white dark:bg-white/10 rounded-lg text-xs font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/5">
+                {["React", "Flutter", "Node.js", "Python", "Firebase", "MongoDB", "TensorFlow", "AWS"].map((tech) => (
+                  <span key={tech} className="px-3 py-1 bg-gray-100 dark:bg-white/10 rounded-lg text-xs font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/10">
                     {tech}
                   </span>
                 ))}
@@ -616,7 +938,6 @@ const Community = () => {
   const [showSwipeHint, setShowSwipeHint] = useState(true);
 
   const handleScroll = (e) => {
-    // Logic updated to allow reappearing
     if (e.target.scrollLeft < 20) {
       setShowSwipeHint(true);
     } else {
@@ -653,7 +974,7 @@ const Community = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="min-w-[85vw] md:min-w-0 snap-center p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/30 transition-all group flex flex-col justify-between h-full"
+                className="min-w-[85vw] md:min-w-0 snap-center p-6 rounded-3xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-all group flex flex-col justify-between h-full"
               >
                 <div>
                   <div className="flex justify-between items-start mb-6">
@@ -666,7 +987,7 @@ const Community = () => {
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{item.role}</h3>
                   <div className="text-sm font-medium text-purple-600 dark:text-purple-400 mb-4">{item.org}</div>
                   
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 overflow-hidden text-ellipsis">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
                     {item.description}
                   </p>
                 </div>
@@ -725,7 +1046,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: -50 }}
                   exit={{ opacity: 0 }}
-                  className="absolute left-1/2 -translate-x-1/2 top-0 px-4 py-2 bg-green-500 text-white text-sm rounded-lg whitespace-nowrap"
+                  className="absolute left-1/2 -translate-x-1/2 top-0 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-black text-sm rounded-lg whitespace-nowrap"
                 >
                   Copied!
                 </motion.span>
@@ -770,7 +1091,7 @@ export default function App() {
       { threshold: 0.3 } 
     );
 
-    ['hero', 'work', 'journey', 'about', 'community', 'contact'].forEach((id) => {
+    ['hero', 'work', 'awards', 'skills', 'opensource', 'journey', 'about', 'community', 'contact'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -788,13 +1109,47 @@ export default function App() {
       
       <Hero />
       <Work />
+      <Awards />
+      <Skills />
+      <OpenSource />
       <Journey />
       <About />
       <Community />
       <Contact />
 
-      <footer className="py-8 flex justify-end text-sm hidden md:block text-gray-600 dark:text-gray-700 border-t border-gray-200 dark:border-white/5 px-6">
-        <p>© 2025 Parag Sharma.</p>
+      <footer className="py-12 md:py-16 border-t border-gray-200 dark:border-white/5 px-6 md:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8">
+            <div>
+              <h3 className="font-bold text-gray-900 dark:text-white mb-4">Navigate</h3>
+              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                <li><a href="#hero" className="hover:text-gray-900 dark:hover:text-white transition-colors">Home</a></li>
+                <li><a href="#work" className="hover:text-gray-900 dark:hover:text-white transition-colors">Work</a></li>
+                <li><a href="#awards" className="hover:text-gray-900 dark:hover:text-white transition-colors">Awards</a></li>
+                <li><a href="#contact" className="hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-gray-900 dark:text-white mb-4">Connect</h3>
+              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                <li><a href="https://github.com/p09s" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 dark:hover:text-white transition-colors">GitHub</a></li>
+                <li><a href="https://linkedin.com/in/p09s" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 dark:hover:text-white transition-colors">LinkedIn</a></li>
+                <li><a href="https://youtube.com/@DaemonPOV" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 dark:hover:text-white transition-colors">YouTube</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-gray-900 dark:text-white mb-4">Built With</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">React, Framer Motion, Tailwind CSS, Vercel</p>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-200 dark:border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400">
+            <p>© 2025 Parag Sharma. All rights reserved.</p>
+            <p className="text-xs mt-4 md:mt-0">Last Updated: January 2025</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
