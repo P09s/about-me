@@ -87,28 +87,28 @@ const OPEN_SOURCE = [
     title: "TheAlgorithms/Python",
     stars: "217k+",
     role: "Contributor",
-    date: "2024",
+    date: "2026",
     contribution: "Implemented O(n) Sliding Window Maximum algorithm using Monotonic Deque",
     tech: ["Python", "Data Structures", "Algorithms"],
-    url: "https://github.com/TheAlgorithms/Python",
+    url: "https://github.com/TheAlgorithms/Python/pull/14133",
     impact: "Merged to 217k+ star project"
   },
   {
     title: "Zomato/espresso",
     role: "Contributor",
-    date: "2024",
+    date: "2026",
     contribution: "Authored production-grade documentation for ZeroLogger integration and observability best practices",
     tech: ["Documentation", "Observability", "Backend"],
-    url: "https://github.com/zomato/espresso",
+    url: "https://github.com/Zomato/espresso/pull/43",
     impact: "Production deployment across teams"
   },
   {
     title: "Agentscope/Trinity-RFT",
     role: "Contributor",
-    date: "2024",
+    date: "2026",
     contribution: "Improved onboarding by adding CPU-only quick-start guide and clarifying hardware requirements",
     tech: ["Documentation", "DevOps", "Guides"],
-    url: "https://github.com/agentscope/trinity-rft",
+    url: "https://github.com/agentscope-ai/Trinity-RFT/pull/474",
     impact: "Better DX for 1000+ users"
   },
 ];
