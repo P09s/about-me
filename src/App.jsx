@@ -43,7 +43,7 @@ const EXPERIENCES = [
   },
   {
     company: "TriColor Initiatives Pvt. Ltd.",
-    role: "Software Engineer Intern (Salesforce Platform)",
+    role: "Software Engineer Intern",
     period: "May 2024 - Jun 2024",
     description: "Designed and implemented frontend interfaces and backend automation using Lightning Web Components and Apex. Improved operational efficiency by 25% by building scalable RESTful API integrations for secure data exchange. Developed analytics dashboards using Salesforce reporting and AI tools to improve data visibility for stakeholders. Collaborated on debugging, performance tuning, and production support for live CRM environments."
   }
