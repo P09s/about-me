@@ -133,7 +133,7 @@ const SKILLS_CATEGORIES = [
   },
   {
     category: "AI/ML & Data",
-    skills: ["TensorFlow", "OpenCV", "ML Kit", "Computer Vision", "LeetCode"],
+    skills: ["TensorFlow", "OpenCV", "ML Kit", "Computer Vision", "MediaPipe", "LeetCode"],
   },
   {
     category: "Platform & Cloud",
