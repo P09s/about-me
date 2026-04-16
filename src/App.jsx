@@ -21,9 +21,9 @@ const globalStyles = `
 // ==================== CONSTANTS ====================
 const PROFILE = {
   name: "Parag Sharma",
-  role: "Product Engineer & Developer",
-  tagline: "Engineering intelligence with pixel-perfect precision.",
-  bio: "Final year B.Tech CSE student and Ex-President of Google Developer Groups (GDG) on Campus. I bridge the gap between complex AI logic and intuitive user experiences. Winner of Ideathon Taiwan 2025. Passionate about Anime, Content Creation, and Building Scalable Systems.",
+  role: "AI/ML Engineer",
+  tagline: "Building intelligent systems with Computer Vision, RAG pipelines, and LLMs.",
+  bio: "Final-year CSE student specializing in AI/ML, certified by Stanford University in Machine Learning. I bridge the gap between complex AI logic and real-world applications, specializing in RAG pipelines, edge-optimized Computer Vision, and LLM orchestration using LangChain. I'm a published patent co-author, open-source contributor, and international hackathon winner recognized by Taiwan's Ministry of Digital Affairs. Passionate about GenAI, Anime content creation, and advancing AI engineering.",
   email: "sharmaparag2004@gmail.com",
   location: "India",
 };
@@ -37,15 +37,15 @@ const SOCIALS = [
 const EXPERIENCES = [
   {
     company: "Google Developer Groups (GDG) on Campus",
-    role: "President & Engineering Lead",
+    role: "Community Lead & Organizer",
     period: "Sept 2024 - July 2025",
-    description: "Led a cross-functional team of 30+ engineers and designers to deliver 10+ production-grade web/AI projects. Directed project management workflows using Agile methodologies, ensuring on-time delivery of key milestones. Established rigorous code review protocols and Git-based version control standards across student teams. Owned end-to-end delivery of award-winning systems including Silent Voice (Ideathon Winner) and Orbcura."
+    description: "Led cross-functional student engineering teams using Agile workflows to deliver large-scale technical events end-to-end. Designed and delivered hands-on workshops on Generative AI using Google Cloud Vertex AI and Gemini APIs for 150+ students. Organized national-level events coordinating 400+ participants and 150+ teams."
   },
   {
     company: "TriColor Initiatives Pvt. Ltd.",
     role: "Software Engineer Intern",
     period: "May 2024 - Jun 2024",
-    description: "Designed and implemented frontend interfaces and backend automation using Lightning Web Components and Apex. Improved operational efficiency by 25% by building scalable RESTful API integrations for secure data exchange. Developed analytics dashboards using Salesforce reporting and AI tools to improve data visibility for stakeholders. Collaborated on debugging, performance tuning, and production support for live CRM environments."
+    description: "Gained hands-on exposure to Salesforce Einstein AI for predictive analytics and AI-driven automation within enterprise ecosystems. Developed encrypted REST APIs reducing third-party integration time by 20%, and optimized database workflows improving query performance by 25%. Built backend automation deployed to 500+ active users."
   }
 ];
 
@@ -56,28 +56,28 @@ const AWARDS = [
     organization: "Ministry of Digital Affairs, Taiwan",
     date: "Nov 2024",
     prize: "$40,000 NT",
-    description: "International recognition for innovative AI-accessibility solution. Won against global competition for Silent Voice project.",
+    description: "Won international hackathon out of global submissions for an AI-powered accessibility innovation enabling ASL-to-speech translation.",
   },
   {
     title: "Top 5 National Finalist",
     organization: "Hack4Change by Google & Charcha",
     date: "Aug 2024",
-    prize: "3000+ Teams",
-    description: "Ranked in top 5 out of 3000+ teams nationwide for building scalable solutions addressing real-world challenges.",
+    prize: "Top 5 of 3000+ Teams",
+    description: "Ranked in the top 5 nationwide for building scalable solutions addressing real-world challenges.",
+  },
+  {
+    title: "National Innovation Award Runner-Up",
+    organization: "NIA 24, P.I.E.T.",
+    date: "Nov 2024",
+    prize: "2nd Position",
+    description: "Secured runner-up position for innovative technical AI solutions in a national-level competition.",
   },
   {
     title: "2nd Runner-Up",
     organization: "Ideathon 2025, Ambala College of Engineering",
     date: "Feb 2025",
     prize: "3rd Prize",
-    description: "Recognized for innovative approach to real-time sign language translation using computer vision.",
-  },
-  {
-    title: "National Innovation Award Runner-Up",
-    organization: "NIA'24, P.I.E.T",
-    date: "Nov 2024",
-    prize: "2nd Position",
-    description: "Secured runner-up position for innovative technical solution in national-level competition.",
+    description: "Awarded 3rd prize for AI innovation focusing on real-time computer vision applications.",
   },
 ];
 
@@ -88,28 +88,28 @@ const OPEN_SOURCE = [
     stars: "217k+",
     role: "Contributor",
     date: "2026",
-    contribution: "Implemented O(n) Sliding Window Maximum algorithm using Monotonic Deque",
+    contribution: "Implemented an O(n) Sliding Window Maximum algorithm using a Monotonic Deque.",
     tech: ["Python", "Data Structures", "Algorithms"],
-    url: "https://github.com/TheAlgorithms/Python/pull/14133",
+    url: "https://github.com/TheAlgorithms/Python",
     impact: "Merged to 217k+ star project"
   },
   {
     title: "Zomato/espresso",
     role: "Contributor",
     date: "2026",
-    contribution: "Authored production-grade documentation for ZeroLogger integration and observability best practices",
+    contribution: "Authored production-grade documentation for ZeroLogger integration and observability best practices.",
     tech: ["Documentation", "Observability", "Backend"],
-    url: "https://github.com/Zomato/espresso/pull/43",
-    impact: "Production deployment across teams"
+    url: "https://github.com/Zomato/espresso",
+    impact: "Production deployment guide"
   },
   {
     title: "Agentscope/Trinity-RFT",
     role: "Contributor",
     date: "2026",
-    contribution: "Improved onboarding by adding CPU-only quick-start guide and clarifying hardware requirements",
-    tech: ["Documentation", "DevOps", "Guides"],
-    url: "https://github.com/agentscope-ai/Trinity-RFT/pull/474",
-    impact: "Better DX for 1000+ users"
+    contribution: "Improved contributor onboarding by adding a CPU-only quick-start guide and clarifying hardware requirements for LLM training.",
+    tech: ["LLMs", "DevOps", "Documentation"],
+    url: "https://github.com/agentscope-ai/Trinity-RFT",
+    impact: "Enhanced Developer Experience"
   },
 ];
 
@@ -117,105 +117,69 @@ const OPEN_SOURCE = [
 const SKILLS_CATEGORIES = [
   {
     category: "Languages",
-    skills: ["C++", "Python", "JavaScript", "SQL", "Dart", "Java"],
+    skills: ["Python", "C++", "SQL", "JavaScript"],
   },
   {
-    category: "Frontend",
-    skills: ["React.js", "Flutter", "Tailwind CSS", "Framer Motion", "HTML/CSS"],
+    category: "LLM & GenAI",
+    skills: ["LangChain (LCEL)", "RAG", "FAISS", "ChromaDB", "HuggingFace", "Groq API", "OpenAI API", "Vertex AI", "Prompt Engineering"],
   },
   {
-    category: "Backend & APIs",
-    skills: ["Node.js", "Express.js", "REST APIs", "Salesforce (Apex, LWC)", "Firebase"],
+    category: "Computer Vision",
+    skills: ["OpenCV", "MediaPipe", "Hand/Pose Landmarker", "Edge Inference"],
   },
   {
-    category: "Databases & Tools",
-    skills: ["MongoDB", "Firestore", "PostgreSQL", "Git/GitHub", "Agile/Jira"],
+    category: "ML / DL",
+    skills: ["Scikit-learn", "TensorFlow", "NumPy", "Pandas", "Matplotlib", "XGBoost"],
   },
   {
-    category: "AI/ML & Data",
-    skills: ["TensorFlow", "OpenCV", "ML Kit", "Computer Vision", "MediaPipe", "LeetCode"],
-  },
-  {
-    category: "Platform & Cloud",
-    skills: ["Google Cloud", "AWS", "Salesforce CRM", "Firebase", "USSD/UPI"],
+    category: "Cloud & Tools",
+    skills: ["Google Cloud Platform", "Streamlit", "Hugging Face Spaces", "Salesforce Einstein AI", "Git/GitHub", "Jupyter"],
   },
 ];
 
 const COMMUNITY_DATA = [
   {
-    role: "Organizer",
-    org: "GDG HACKS",
-    period: "Dec 2024 - Apr 2025",
-    description: "Orchestrated a national-level hackathon with 400+ participants and 150 teams. Managed logistics for an intense innovation challenge.",
+    role: "Hackathon Lead",
+    org: "GDG Hackureka & GDG Hacks",
+    period: "Sept 2024 - Jul 2025",
+    description: "Organized national-level events coordinating 400+ participants and 150+ teams across India using Agile workflows.",
     icon: Trophy,
-    tags: ["Management", "Event Planning"],
+    tags: ["Leadership", "Event Management"],
   },
   {
-    role: "Solution Challenge Facilitator",
-    org: "Google Developer Student Clubs",
-    period: "Dec 2024",
-    description: "Guided student teams in building solutions for the UN Sustainable Development Goals using Google technologies.",
+    role: "GenAI Educator",
+    org: "GDG on Campus",
+    period: "Sept 2024 - Jul 2025",
+    description: "Designed and delivered hands-on workshops on Generative AI using Google Cloud Vertex AI and Gemini APIs for 150+ students.",
     icon: Lightbulb,
-    tags: ["Mentorship", "UN SDGs"],
-  },
-  {
-    role: "Student Coordinator",
-    org: "GDG Hackureka",
-    period: "Feb 2025",
-    description: "Coordinated a 7-hour intense hackathon challenge. Successfully managed 400+ participants from across the country.",
-    icon: Users,
-    tags: ["Leadership", "Operations"],
-  },
-  {
-    role: "Facilitator",
-    org: "GDSC MM(DU) - GenAI",
-    period: "May 2024",
-    description: "Led a month-long GenAI Google Cloud program. Reviewed applications for 150 students and guided them through cloud concepts.",
-    icon: Mic,
-    tags: ["Mentorship", "GenAI"],
-  },
-  {
-    role: "Co-Facilitator",
-    org: "GDSC MM(DU) - Android",
-    period: "Dec 2023 - Jan 2024",
-    description: "Taught Android Development to 70-100 students under the 'Discover, Design and Develop' program.",
-    icon: Code,
-    tags: ["Teaching", "Android"],
+    tags: ["Mentorship", "GenAI", "GCP"],
   }
 ];
 
 const PROJECTS = [
   {
-    title: "LinkFluence",
-    category: "Web Development & SaaS",
-    description: "A collaborative marketplace bridging the gap between micro-influencers and brands. Features automated matchmaking and secure campaign management with scalable backend supporting 1000+ concurrent users.",
-    stats: "Building",
-    tech: ["MongoDB", "Express.js", "React", "Node.js"],
-    repo: "https://github.com/p09s/creator-brand" 
-  },
-  {
-    title: "Orbcura",
-    category: "Accessibility & AI",
-    description: "Assistive app for the visually impaired featuring real-time AI image detection and voice-guided UPI payments. Engineered USSD-based UPI layer enabling offline transactions without app permissions. Patent published.",
-    stats: "Patent Published", 
-    tech: ["Flutter", "ML Kit", "UPI API", "Firebase"],
-    repo: "https://github.com/p09s/Orbcura-App" 
+    title: "RepoSage",
+    category: "AI Codebase Intelligence",
+    description: "Implemented a two-stage RAG strategy with multi-hop retrieval using LangChain (LCEL) and ChromaDB. Engineered a code-aware ingestion engine parsing GitHub repos to persist structured chunks with rich metadata, deployed via Streamlit.",
+    stats: "Advanced RAG Pipeline",
+    tech: ["Python", "LangChain (LCEL)", "ChromaDB", "Groq API", "Hugging Face"],
+    repo: "https://github.com/p09s" 
   },
   {
     title: "Silent Voice",
-    category: "AI & Computer Vision",
-    description: "International award-winning sign language translation system using computer vision and speech synthesis. Enables seamless communication between hearing-impaired users and non-sign speakers. Winner of Taiwan Good Idea Award.",
+    category: "Real-Time Computer Vision",
+    description: "Built an edge-optimized real-time ASL-to-speech interpreter using OpenCV and MediaPipe. Achieved 30+ FPS inference on CPU-only hardware with zero cloud dependency. Won the Taiwan Ministry of Digital Affairs hackathon.",
     stats: "Winner, Ideathon Taiwan",
-    tech: ["Python", "OpenCV", "TensorFlow", "Flutter"],
+    tech: ["Python", "OpenCV", "MediaPipe", "Edge Inference"],
     repo: "https://github.com/p09s/SilentVoice" 
   },
   {
-    title: "Aqua Watch",
-    category: "Disaster Management",
-    description: "Community-driven flood management system with crowd-sourced reporting and interactive risk mapping. Enables citizens to contribute hazard reports and view live risk zones using Google Maps integration.",
-    stats: "Real-time Analytics",
-    tech: ["Flutter", "Google Maps API", "Firebase"],
-    repo: "https://github.com/p09s/Aqua-Watch-App" 
+    title: "Orbcura",
+    category: "Assistive AI App",
+    description: "Developed a real-time activity-monitoring module using MediaPipe Pose Landmarker for visually impaired users. Engineered an offline USSD-based UPI payment layer bypassing internet constraints, resulting in a co-authored published patent.",
+    stats: "Patent Published", 
+    tech: ["Python", "OpenCV", "MediaPipe", "Flutter", "USSD"],
+    repo: "https://github.com/p09s/Orbcura-App" 
   }
 ];
 
@@ -405,7 +369,7 @@ const Hero = () => {
             className="flex flex-wrap justify-center gap-4 mt-12 items-center"
           >
             <motion.a
-              href="/Parag_Resume.pdf"
+              href="/Parag_AI.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 dark:bg-white text-white dark:text-black font-medium border border-transparent hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors shadow-lg"
@@ -476,16 +440,12 @@ const Work = () => {
               >
                 <div>
                   <div className="flex justify-between items-start mb-4">
-                    {/* Highlighted Subheading: Category */}
                     <span className="text-xs font-bold font-mono text-purple-600 dark:text-purple-400 uppercase tracking-wider">{project.category}</span>
                     
                     {project.stats && (
                       <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap ${
                         project.stats.includes("Patent") 
-                          // Highlighted Patent Text/Badge
                           ? "bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30"
-                          : project.stats.includes("Winner")
-                          ? "bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white border border-gray-300 dark:border-white/20"
                           : "bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white border border-gray-300 dark:border-white/20"
                       }`}>
                         {project.stats}
@@ -558,7 +518,7 @@ const Awards = () => {
             Recognition & Awards
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl text-lg">
-            Celebrating achievements in innovation, engineering excellence, and impact at national and international levels.
+            Celebrating achievements in AI innovation, engineering excellence, and impact at national and international levels.
           </p>
         </motion.div>
 
@@ -581,7 +541,6 @@ const Awards = () => {
                     {award.title}
                   </h3>
                   
-                  {/* Highlighted Subheading: Organization */}
                   <p className="text-sm md:text-base font-bold text-purple-600 dark:text-purple-400 mb-3">
                     {award.organization}
                   </p>
@@ -625,7 +584,7 @@ const Skills = () => {
             Technical Arsenal
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl text-lg">
-            A comprehensive toolkit spanning full-stack development, cloud platforms, AI/ML, and enterprise systems.
+            A comprehensive toolkit focused on LLMs, generative AI, machine learning, and scalable cloud deployments.
           </p>
         </motion.div>
 
@@ -639,7 +598,6 @@ const Skills = () => {
               transition={{ delay: idx * 0.1 }}
               className="p-6 md:p-8 rounded-3xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-all"
             >
-              {/* Highlighted Subheading: Category Title */}
               <h3 className="text-lg md:text-xl font-bold text-purple-600 dark:text-purple-400 mb-6 uppercase tracking-wider">
                 {category.category}
               </h3>
@@ -691,7 +649,7 @@ const OpenSource = () => {
             Open Source Impact
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl text-lg">
-            Contributing to projects trusted by millions. Code merged to repositories with 217k+ stars.
+            Contributing to LLM orchestration frameworks and open-source ecosystems trusted by millions.
           </p>
         </motion.div>
 
@@ -727,7 +685,6 @@ const OpenSource = () => {
                     {project.contribution}
                   </p>
 
-                  {/* Highlighted Merged/Impact Statement Container */}
                   <div className="p-3 rounded-lg bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-500/20 mb-6">
                     <p className="text-xs md:text-sm font-medium text-purple-700 dark:text-purple-300">
                       {project.impact}
@@ -822,7 +779,6 @@ const About = () => {
 
         <div className="flex flex-col gap-6 md:grid md:grid-cols-12 relative">
           
-          {/* 1. Bio Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -834,16 +790,14 @@ const About = () => {
               {PROFILE.bio}
             </p>
             <p className="mt-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
-              I believe that true engineering isn't just about writing functions—it's about crafting experiences. Whether it's organizing national hackathons or editing the perfect frame for an anime review, I obsess over the details.
+              I believe that true AI engineering isn't just about training models—it's about architecting systems that solve real problems. Whether it's building advanced RAG architectures, orchestrating complex LLMs, or editing the perfect frame for an anime review, I obsess over the details.
             </p>
           </motion.div>
 
-          {/* 2. Scrollable Section for Mobile */}
           <div 
             className="flex overflow-x-auto gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory no-scrollbar md:contents"
             onScroll={handleScroll}
           >
-            {/* Photo Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -863,7 +817,6 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* Youtube Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -880,7 +833,6 @@ const About = () => {
                   <div className="p-2 bg-gray-900 dark:bg-white rounded-lg text-white dark:text-black group-hover:bg-red-600 dark:group-hover:bg-red-600 transition-colors">
                     <Play size={20} fill="currentColor" />
                   </div>
-                  {/* Highlighted Tag: Content Creator */}
                   <span className="font-bold text-purple-600 dark:text-purple-400 tracking-wider text-sm">CONTENT CREATOR</span>
                 </div>
                 
@@ -901,7 +853,6 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* Tech Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -913,11 +864,11 @@ const About = () => {
                 <div className="p-2 rounded-lg bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   <Cpu size={20} />
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white">Tech Stack</h4>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white">AI Core Stack</h4>
               </div>
               
               <div className="flex flex-wrap gap-2">
-                {["React", "Flutter", "Node.js", "Python", "Firebase", "MongoDB", "TensorFlow", "AWS"].map((tech) => (
+                {["LangChain", "ChromaDB", "Python", "TensorFlow", "Hugging Face", "OpenCV", "GCP"].map((tech) => (
                   <span key={tech} className="px-3 py-1 bg-gray-100 dark:bg-white/10 rounded-lg text-xs font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/10">
                     {tech}
                   </span>
@@ -958,14 +909,14 @@ const Community = () => {
             Community<br />Impact
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-md text-lg text-right md:text-left">
-            Empowering the next generation of developers through leadership, mentorship, and large-scale events.
+            Empowering the next generation of developers through GenAI education and large-scale technical events.
           </p>
         </motion.div>
 
         <div className="relative">
           <div 
             onScroll={handleScroll}
-            className="flex overflow-x-auto no-scrollbar gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0 md:mx-0 md:px-0"
+            className="flex overflow-x-auto no-scrollbar gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 md:mx-0 md:px-0"
           >
             {COMMUNITY_DATA.map((item, i) => (
               <motion.div
@@ -1030,7 +981,7 @@ const Contact = () => {
           className="text-center"
         >
           <h2 className="text-4xl md:text-5xl lg:text-8xl font-bold mb-8 tracking-tight text-gray-900 dark:text-white">
-            Let's Create<br />Something Amazing
+            Let's Engineer<br />The Future
           </h2>
 
           <motion.button
@@ -1146,8 +1097,8 @@ export default function App() {
           </div>
 
           <div className="border-t border-gray-200 dark:border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400">
-            <p>© 2025 Parag Sharma. All rights reserved.</p>
-            <p className="text-xs mt-4 md:mt-0">Last Updated: January 2025</p>
+            <p>© 2026 Parag Sharma. All rights reserved.</p>
+            <p className="text-xs mt-4 md:mt-0">Last Updated: April 2026</p>
           </div>
         </div>
       </footer>
