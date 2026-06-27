@@ -21,9 +21,9 @@ const globalStyles = `
 // ==================== CONSTANTS ====================
 const PROFILE = {
   name: "Parag Sharma",
-  role: "AI/ML Engineer",
-  tagline: "Building intelligent systems with Computer Vision, RAG pipelines, and LLMs.",
-  bio: "Final-year CSE student specializing in AI/ML, certified by Stanford University in Machine Learning. I bridge the gap between complex AI logic and real-world applications, specializing in RAG pipelines, edge-optimized Computer Vision, and LLM orchestration using LangChain. I'm a published patent co-author, open-source contributor, and international hackathon winner recognized by Taiwan's Ministry of Digital Affairs. Passionate about GenAI, Anime content creation, and advancing AI engineering.",
+  role: "Solo Founder · Full-Stack AI Product Builder",
+  tagline: "Shipping live AI products solo — from idea to Android, app to production.",
+  bio: "Solo founder who's shipped two live AI products — MilaKya (Google Play beta) and Daivam AI (live in production) — owning strategy, design, engineering, and go-to-market from day one. I bridge complex AI logic with real-world products, specializing in RAG pipelines, edge-optimized Computer Vision, and full-stack development with Next.js and Supabase. I'm a published patent co-author, open-source contributor, and international hackathon winner recognized by Taiwan's Ministry of Digital Affairs. Passionate about GenAI, building things people actually use, and anime content creation.",
   email: "sharmaparag2004@gmail.com",
   location: "India",
 };
@@ -79,6 +79,13 @@ const AWARDS = [
     prize: "3rd Prize",
     description: "Awarded 3rd prize for AI innovation focusing on real-time computer vision applications.",
   },
+  {
+    title: "Co-authored Patent",
+    organization: "Offline USSD-based UPI Payment Layer",
+    date: "Dec 2025",
+    prize: "Published Patent",
+    description: "Co-authored a published patent for an offline accessibility data workflow enabling UPI payments via USSD on feature phones — bypassing internet constraints entirely.",
+  },
 ];
 
 // ==================== OPEN-SOURCE DATA ====================
@@ -115,6 +122,10 @@ const OPEN_SOURCE = [
 
 // ==================== SKILLS DATA ====================
 const SKILLS_CATEGORIES = [
+  {
+    category: "Product / Fullstack",
+    skills: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Supabase", "Vercel", "PWA / TWA (Android)"],
+  },
   {
     category: "Languages",
     skills: ["Python", "C++", "SQL", "JavaScript"],
@@ -154,6 +165,30 @@ const COMMUNITY_DATA = [
     icon: Lightbulb,
     tags: ["Mentorship", "GenAI", "GCP"],
   }
+];
+
+// ==================== LIVE PRODUCTS DATA ====================
+const PRODUCTS = [
+  {
+    title: "MilaKya",
+    icon: Home,
+    status: "Beta · Google Play",
+    statusClass: "bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-500/30",
+    tagline: "Apna Saman, Apni Jagah — your stuff, its place.",
+    description: "Bilingual item tracker built for India's multi-home generation — people juggling belongings across a PG, parents', in-laws', and storage. Photograph a shelf or handwritten list and AI reads, names, and organizes items by room. No manual entry required.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Groq AI", "Android"],
+    url: "https://milakya.vercel.app",
+  },
+  {
+    title: "Daivam AI",
+    icon: Star,
+    status: "Live in Production",
+    statusClass: "bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30",
+    tagline: "AI-powered Vedic astrology, made conversational.",
+    description: "A live platform delivering personalized birth chart readings and partner compatibility through conversational AI, built with SEO and vernacular keyword targeting for Indian search traffic.",
+    tech: ["Next.js", "Supabase", "Groq AI", "LangChain"],
+    url: "https://daivam.vercel.app",
+  },
 ];
 
 const PROJECTS = [
@@ -270,6 +305,7 @@ const ThemeToggle = ({ theme, toggleTheme }) => (
 const Navbar = ({ activeSection, setActiveSection }) => {
   const navItems = [
     { id: 'hero', icon: Home, label: 'Home' },
+    { id: 'products', icon: Star, label: 'Products' },
     { id: 'work', icon: Briefcase, label: 'Work' },
     { id: 'awards', icon: Trophy, label: 'Awards' },
     { id: 'skills', icon: Cpu, label: 'Skills' },
@@ -353,7 +389,7 @@ const Hero = () => {
           >
             <span className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              Open to Work
+              Founder · Building AI Products
             </span>
             <span className="hidden md:inline">•</span>
             <span>{PROFILE.location}</span>
@@ -369,7 +405,7 @@ const Hero = () => {
             className="flex flex-wrap justify-center gap-4 mt-12 items-center"
           >
             <motion.a
-              href="/Parag_AI.pdf"
+              href="/Parag_Res.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 dark:bg-white text-white dark:text-black font-medium border border-transparent hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors shadow-lg"
@@ -395,6 +431,98 @@ const Hero = () => {
             ))}
           </motion.div>
         </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// ==================== PRODUCTS (LIVE) ====================
+const Products = () => {
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
+
+  const handleScroll = (e) => {
+    if (e.target.scrollLeft < 20) {
+      setShowSwipeHint(true);
+    } else {
+      setShowSwipeHint(false);
+    }
+  };
+
+  return (
+    <section id="products" className="min-h-screen py-20 md:py-32 px-6 flex items-center">
+      <div className="max-w-7xl mx-auto w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 md:mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+            Live Products
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl text-lg">
+            Two AI products shipped solo — from idea to real users, end-to-end.
+          </p>
+        </motion.div>
+
+        <div className="relative">
+          <div
+            onScroll={handleScroll}
+            className="flex overflow-x-auto no-scrollbar gap-4 pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 md:mx-0 md:px-0"
+          >
+            {PRODUCTS.map((product, i) => (
+              <motion.a
+                href={product.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={product.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="min-w-[85vw] md:min-w-0 snap-center group relative p-6 md:p-8 rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-all flex flex-col justify-between cursor-pointer"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="p-3 rounded-full bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white">
+                      <product.icon size={20} />
+                    </div>
+                    <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap ${product.statusClass}`}>
+                      {product.status}
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                    {product.title}
+                  </h3>
+
+                  <p className="text-sm italic text-purple-600 dark:text-purple-400 mb-4">
+                    {product.tagline}
+                  </p>
+
+                  <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed mb-6">
+                    {product.description}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mt-auto mb-4">
+                  {product.tech.map(tech => (
+                    <span key={tech} className="px-3 py-1 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/5 text-xs font-medium text-gray-600 dark:text-gray-300 whitespace-nowrap">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white group-hover:translate-x-1 transition-transform">
+                  Visit Live Site
+                  <ExternalLink size={14} />
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
+          <SwipeHint isVisible={showSwipeHint} />
+        </div>
       </div>
     </section>
   );
@@ -584,7 +712,7 @@ const Skills = () => {
             Technical Arsenal
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl text-lg">
-            A comprehensive toolkit focused on LLMs, generative AI, machine learning, and scalable cloud deployments.
+            A comprehensive toolkit spanning full-stack product engineering, generative AI, machine learning, and scalable cloud deployments.
           </p>
         </motion.div>
 
@@ -1042,7 +1170,7 @@ export default function App() {
       { threshold: 0.3 } 
     );
 
-    ['hero', 'work', 'awards', 'skills', 'opensource', 'journey', 'about', 'community', 'contact'].forEach((id) => {
+    ['hero', 'products', 'work', 'awards', 'skills', 'opensource', 'journey', 'about', 'community', 'contact'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -1059,6 +1187,7 @@ export default function App() {
       <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
       
       <Hero />
+      <Products />
       <Work />
       <Awards />
       <Skills />
@@ -1075,6 +1204,7 @@ export default function App() {
               <h3 className="font-bold text-gray-900 dark:text-white mb-4">Navigate</h3>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                 <li><a href="#hero" className="hover:text-gray-900 dark:hover:text-white transition-colors">Home</a></li>
+                <li><a href="#products" className="hover:text-gray-900 dark:hover:text-white transition-colors">Products</a></li>
                 <li><a href="#work" className="hover:text-gray-900 dark:hover:text-white transition-colors">Work</a></li>
                 <li><a href="#awards" className="hover:text-gray-900 dark:hover:text-white transition-colors">Awards</a></li>
                 <li><a href="#contact" className="hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a></li>
@@ -1098,7 +1228,7 @@ export default function App() {
 
           <div className="border-t border-gray-200 dark:border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400">
             <p>© 2026 Parag Sharma. All rights reserved.</p>
-            <p className="text-xs mt-4 md:mt-0">Last Updated: April 2026</p>
+            <p className="text-xs mt-4 md:mt-0">Last Updated: June 2026</p>
           </div>
         </div>
       </footer>
